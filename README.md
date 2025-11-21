@@ -2,8 +2,9 @@
 
 A modern, responsive weather dashboard built with **React**, **Vite**, and **Tailwind CSS**. This application provides real-time weather updates, detailed forecasts, and a beautiful user interface with smooth animations.
 
-![Weather App Screenshot](https://images.unsplash.com/photo-1592210454359-9043f067919b?auto=format&fit=crop&w=1000&q=80)
-*(Replace this link with a screenshot of your actual app!)*
+## 🌐 Live Demo
+
+[**View Live App**](http://localhost:5173) *(Running locally)*
 
 ## ✨ Features
 
