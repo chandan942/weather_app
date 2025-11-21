@@ -9,7 +9,7 @@ const CurrentWeather = ({ data }) => {
     const date = new Date(dt * 1000);
 
     return (
-        <div className="bg-slate-800/50 backdrop-blur-md border border-slate-700 rounded-3xl p-8 mb-6 text-white shadow-xl">
+        <div className="bg-white/10 backdrop-blur-lg border border-white/20 shadow-xl rounded-3xl p-8 mb-6 text-white">
             <div className="flex flex-col md:flex-row justify-between items-center">
                 <div className="mb-6 md:mb-0 text-center md:text-left">
                     <div className="flex items-center justify-center md:justify-start gap-2 text-slate-400 mb-2">

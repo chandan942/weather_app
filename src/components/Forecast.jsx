@@ -31,7 +31,7 @@ const Forecast = ({ data }) => {
             variants={container}
             initial="hidden"
             animate="show"
-            className="bg-slate-800/50 backdrop-blur-md border border-slate-700 rounded-3xl p-6 shadow-xl"
+            className="bg-white/10 backdrop-blur-lg border border-white/20 shadow-xl rounded-3xl p-6"
         >
             <h3 className="text-xl font-semibold text-white mb-6 pl-2 border-l-4 border-sky-500">5-Day Forecast</h3>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
@@ -40,7 +40,7 @@ const Forecast = ({ data }) => {
                         key={index}
                         variants={item}
                         whileHover={{ scale: 1.05 }}
-                        className="bg-slate-900/50 p-4 rounded-2xl flex flex-col items-center justify-center border border-slate-800 hover:border-sky-500/30 transition-colors group"
+                        className="bg-black/20 p-4 rounded-2xl flex flex-col items-center justify-center border border-white/10 hover:bg-white/10 transition-colors group"
                     >
                         <span className="text-slate-400 text-sm mb-2">
                             {format(new Date(day.dt * 1000), 'EEE')}

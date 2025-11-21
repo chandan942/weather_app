@@ -6,8 +6,8 @@ import WeatherDetails from './components/WeatherDetails';
 import Forecast from './components/Forecast';
 import { fetchWeather, fetchForecast } from './services/weatherApi';
 import { Loader2, AlertCircle } from 'lucide-react';
-
 import { motion } from 'framer-motion';
+import { getWeatherTheme } from './utils/weatherThemes';
 
 function App() {
   const [weather, setWeather] = useState(null);
@@ -53,40 +53,55 @@ function App() {
     handleSearch('London');
   }, []);
 
+  const bgTheme = getWeatherTheme(weather);
+
   return (
-    <Layout>
-      <SearchBar onSearch={handleSearch} />
+    <div className={`min-h-screen bg-gradient-to-br ${bgTheme} transition-all duration-1000 ease-in-out text-white font-sans selection:bg-sky-500 selection:text-white`}>
+      <div className="container mx-auto px-4 py-8 max-w-4xl">
+        <header className="mb-8 text-center">
+          <h1 className="text-4xl font-bold drop-shadow-md">
+            Weather Forecast
+          </h1>
+          <p className="opacity-80 mt-2">Your daily weather companion</p>
+        </header>
+        <main>
+          <SearchBar onSearch={handleSearch} />
 
-      {loading && (
-        <div className="flex flex-col items-center justify-center py-20">
-          <Loader2 className="w-10 h-10 text-sky-500 animate-spin mb-4" />
-          <p className="text-slate-400">Loading weather data...</p>
-        </div>
-      )}
+          {loading && (
+            <div className="flex flex-col items-center justify-center py-20">
+              <Loader2 className="w-10 h-10 animate-spin mb-4 opacity-80" />
+              <p className="opacity-80">Loading weather data...</p>
+            </div>
+          )}
 
-      {error && (
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="bg-red-500/10 border border-red-500/50 text-red-400 p-4 rounded-xl flex items-center gap-3 mb-8"
-        >
-          <AlertCircle className="w-5 h-5" />
-          <p>{error}</p>
-        </motion.div>
-      )}
+          {error && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="bg-red-500/20 border border-red-500/50 p-4 rounded-xl flex items-center gap-3 mb-8 backdrop-blur-sm"
+            >
+              <AlertCircle className="w-5 h-5" />
+              <p>{error}</p>
+            </motion.div>
+          )}
 
-      {!loading && !error && weather && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <CurrentWeather data={weather} />
-          <WeatherDetails data={weather} />
-          <Forecast data={forecast} />
-        </motion.div>
-      )}
-    </Layout>
+          {!loading && !error && weather && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <CurrentWeather data={weather} />
+              <WeatherDetails data={weather} />
+              <Forecast data={forecast} />
+            </motion.div>
+          )}
+        </main>
+        <footer className="mt-12 text-center opacity-60 text-sm">
+          <p>© {new Date().getFullYear()} Weather App. Built with React & Tailwind.</p>
+        </footer>
+      </div>
+    </div>
   );
 }
 
