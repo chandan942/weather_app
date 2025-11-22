@@ -4,7 +4,7 @@ A modern, responsive weather dashboard built with **React**, **Vite**, and **Tai
 
 ## 🌐 Live Demo
 
-[**View Live App**](http://localhost:5173) *(Running locally)*
+[**View Live App**](https://weather-g7eulbnr6-chandan-singhs-projects-26669034.vercel.app) 🚀
 
 ## ✨ Features
 
