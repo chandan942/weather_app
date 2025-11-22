@@ -31,18 +31,18 @@ const Forecast = ({ data }) => {
             variants={container}
             initial="hidden"
             animate="show"
-            className="bg-white/10 backdrop-blur-lg border border-white/20 shadow-xl rounded-3xl p-6"
+            className="bg-slate-900/30 backdrop-blur-xl border border-violet-500/20 shadow-2xl shadow-violet-500/10 rounded-3xl p-6"
         >
-            <h3 className="text-xl font-semibold text-white mb-6 pl-2 border-l-4 border-sky-500">5-Day Forecast</h3>
+            <h3 className="text-xl font-semibold text-white mb-6 pl-2 border-l-4 border-cyan-400">5-Day Forecast</h3>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                 {forecastsToDisplay.map((day, index) => (
                     <motion.div
                         key={index}
                         variants={item}
                         whileHover={{ scale: 1.05 }}
-                        className="bg-black/20 p-4 rounded-2xl flex flex-col items-center justify-center border border-white/10 hover:bg-white/10 transition-colors group"
+                        className="bg-black/30 p-4 rounded-2xl flex flex-col items-center justify-center border border-violet-500/20 hover:bg-violet-500/10 hover:border-cyan-400/30 transition-all group"
                     >
-                        <span className="text-slate-400 text-sm mb-2">
+                        <span className="text-slate-300 text-sm mb-2">
                             {format(new Date(day.dt * 1000), 'EEE')}
                         </span>
                         <img

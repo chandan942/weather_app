@@ -22,10 +22,10 @@ const DetailItem = ({ icon: Icon, label, value, unit }) => (
     <motion.div
         variants={item}
         whileHover={{ scale: 1.05 }}
-        className="bg-white/10 backdrop-blur-lg border border-white/20 shadow-xl p-4 rounded-2xl flex flex-col items-center justify-center gap-2 hover:bg-white/20 transition-colors"
+        className="bg-slate-900/30 backdrop-blur-xl border border-violet-500/20 shadow-lg shadow-violet-500/5 p-4 rounded-2xl flex flex-col items-center justify-center gap-2 hover:bg-violet-500/10 hover:border-cyan-400/30 transition-all"
     >
-        <Icon className="w-6 h-6 text-sky-400" />
-        <span className="text-slate-400 text-sm">{label}</span>
+        <Icon className="w-6 h-6 text-cyan-400" />
+        <span className="text-slate-300 text-sm">{label}</span>
         <span className="text-white font-semibold text-lg">{value}{unit}</span>
     </motion.div>
 );

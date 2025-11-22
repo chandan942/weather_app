@@ -1,0 +1,202 @@
+/* Adaptive Dynamic Background Styles */
+.dynamic-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+    transition: all 2s ease-in-out;
+}
+
+/* Base gradient layer */
+.bg-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: background 2s ease-in-out;
+}
+
+/* Celestial glow (sun/moon) */
+.celestial-glow {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    transition: all 2s ease-in-out;
+    animation: celestialPulse 8s ease-in-out infinite;
+}
+
+@keyframes celestialPulse {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: translateX(-50%) scale(1);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: translateX(-50%) scale(1.1);
+    }
+}
+
+/* Atmospheric haze layer */
+.atmospheric-haze {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: background 2s ease-in-out;
+    pointer-events: none;
+}
+
+/* Stars (night only) */
+.stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    transition: opacity 2s ease-in-out;
+}
+
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 3s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+
+/* Clouds */
+.clouds-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    transition: opacity 2s ease-in-out;
+}
+
+.cloud {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 200px;
+    filter: blur(40px);
+    animation: cloudFloat 30s linear infinite;
+}
+
+@keyframes cloudFloat {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(100vw);
+    }
+}
+
+/* Weather particles container */
+.weather-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* Rain particles */
+.rain-particle {
+    position: absolute;
+    width: 2px;
+    height: 20px;
+    background: linear-gradient(to bottom, rgba(174, 194, 224, 0.8), transparent);
+    animation: rainFall 1s linear infinite;
+}
+
+@keyframes rainFall {
+    0% {
+        transform: translateY(-10vh);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(110vh);
+        opacity: 0.5;
+    }
+}
+
+/* Snow particles */
+.snow-particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    animation: snowFall 8s linear infinite;
+}
+
+@keyframes snowFall {
+    0% {
+        transform: translateY(-10vh) translateX(0) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(110vh) translateX(50px) rotate(360deg);
+        opacity: 0.7;
+    }
+}
+
+/* Smooth transitions between themes */
+.dynamic-background * {
+    transition: opacity 2s ease-in-out, background 2s ease-in-out;
+}
+
+/* Performance optimizations */
+.star,
+.cloud,
+.weather-particle {
+    will-change: transform, opacity;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+
+    /* Reduce particle count on mobile (handled in JS) */
+    .celestial-glow {
+        width: 200px;
+        height: 200px;
+        filter: blur(60px);
+    }
+}
+
+/* Accessibility: Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+
+    .dynamic-background,
+    .dynamic-background * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

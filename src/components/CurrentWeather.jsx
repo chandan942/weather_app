@@ -9,21 +9,21 @@ const CurrentWeather = ({ data }) => {
     const date = new Date(dt * 1000);
 
     return (
-        <div className="bg-white/10 backdrop-blur-lg border border-white/20 shadow-xl rounded-3xl p-8 mb-6 text-white">
+        <div className="bg-slate-900/30 backdrop-blur-xl border border-violet-500/20 shadow-2xl shadow-violet-500/10 rounded-3xl p-8 mb-6 text-white">
             <div className="flex flex-col md:flex-row justify-between items-center">
                 <div className="mb-6 md:mb-0 text-center md:text-left">
-                    <div className="flex items-center justify-center md:justify-start gap-2 text-slate-400 mb-2">
+                    <div className="flex items-center justify-center md:justify-start gap-2 text-slate-300 mb-2">
                         <MapPin className="w-4 h-4" />
                         <span className="text-lg">{name}, {sys.country}</span>
                     </div>
-                    <div className="flex items-center justify-center md:justify-start gap-2 text-slate-400 text-sm mb-6">
+                    <div className="flex items-center justify-center md:justify-start gap-2 text-slate-300 text-sm mb-6">
                         <Calendar className="w-4 h-4" />
                         <span>{format(date, 'EEEE, d MMMM')}</span>
                     </div>
-                    <div className="text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400">
+                    <div className="text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 via-white to-violet-300">
                         {Math.round(main.temp)}°
                     </div>
-                    <p className="text-xl text-sky-400 font-medium capitalize mt-2">
+                    <p className="text-xl text-cyan-400 font-medium capitalize mt-2">
                         {weather[0].description}
                     </p>
                 </div>
